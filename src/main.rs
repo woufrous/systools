@@ -10,6 +10,8 @@ use serde::Serialize;
 mod cpu;
 use cpu::cpu_info;
 
+mod clock;
+
 #[derive(Serialize)]
 struct SwaybarHeader {
     version: i32,
@@ -39,6 +41,11 @@ fn main() -> io::Result<()> {
                 full_text: format!("{:.1}", speed as f64 / 1_000.),
             });
         }
+
+        items.push(SwaybarItem{
+            name: String::from("clock"),
+            full_text: clock::clock::get_clock(),
+        });
 
         let jstr = serde_json::to_string(&items)?;
         println!("{},", jstr);
