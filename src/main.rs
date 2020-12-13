@@ -7,10 +7,7 @@ use std::thread;
 
 use serde::Serialize;
 
-mod cpu;
-use cpu::cpu_info;
-
-mod clock;
+mod widgets;
 
 #[derive(Serialize)]
 struct SwaybarHeader {
@@ -35,7 +32,7 @@ fn main() -> io::Result<()> {
     loop {
 
         let mut items: Vec<SwaybarItem> = Vec::new();
-        for speed in cpu_info::get_cpu_speeds() {
+        for speed in widgets::cpu::get_cpu_speeds() {
             items.push(SwaybarItem{
                 name: String::from("cpu_speed"),
                 full_text: format!("{:.1}", speed as f64 / 1_000.),
@@ -44,7 +41,7 @@ fn main() -> io::Result<()> {
 
         items.push(SwaybarItem{
             name: String::from("clock"),
-            full_text: clock::clock::get_clock(),
+            full_text: widgets::clock::get_clock(),
         });
 
         let jstr = serde_json::to_string(&items)?;
