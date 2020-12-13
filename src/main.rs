@@ -1,5 +1,3 @@
-extern crate serde_json;
-
 use std::vec::Vec;
 use std::io;
 use std::time;

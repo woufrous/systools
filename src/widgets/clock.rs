@@ -1,4 +1,3 @@
-extern crate chrono;
 use chrono::prelude::*;
 
 pub fn get_clock() -> String {
