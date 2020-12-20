@@ -48,8 +48,14 @@ impl CpuSpeedWidget {
 impl widget::Widget for CpuSpeedWidget {
     fn render(&self) -> sway::SwaybarItem {
         let speeds = CpuSpeedWidget::get_cpu_speeds();
+        let filter = |vals: Vec<u32>| -> u32 {
+            match vals.iter().max() {
+                Some(&v) => v,
+                None => 0,
+            }
+        };
         return sway::SwaybarItem::new(
-            format!("{:.1}", speeds[0] as f64 / 1_000.),
+            format!("{:.1}", filter(speeds) as f64 / 1_000.),
             String::from("cpu"),
         );
     }
