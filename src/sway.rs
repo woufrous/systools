@@ -10,7 +10,7 @@ impl SwaybarHeader {
     pub fn new(click_events: bool) -> SwaybarHeader {
         SwaybarHeader{
             version: 1,
-            click_events: click_events,
+            click_events,
         }
     }
 }
@@ -26,8 +26,8 @@ pub struct SwaybarItem {
 impl SwaybarItem {
     pub fn new(name: String, full_text: String) -> SwaybarItem {
         SwaybarItem {
-            name: name,
-            full_text: full_text,
+            name,
+            full_text,
             color: None,
         }
     }

@@ -55,8 +55,8 @@ impl widget::Widget for CpuSpeedWidget {
             }
         };
         return sway::SwaybarItem::new(
-            format!("{:.1}", filter(speeds) as f64 / 1_000.),
             String::from("cpu"),
+            format!("{:.1}", filter(speeds) as f64 / 1_000.),
         );
     }
 }
