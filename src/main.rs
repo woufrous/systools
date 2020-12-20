@@ -11,9 +11,10 @@ fn main() -> io::Result<()> {
     let jhdr = serde_json::to_string(&header)?;
     println!("{}\n[", jhdr);
 
+    let clock_widget = widgets::clock::ClockWidget{format_str: String::from("%Y-%m-%d %H:%M:%S")};
     let mut wgs: Vec<Box<dyn widgets::widget::Widget>> = Vec::new();
     wgs.push(Box::new(widgets::cpu::CpuSpeedWidget{}));
-    wgs.push(Box::new(widgets::clock::ClockWidget{format_str: String::from("%Y-%m-%d %H:%M:%S")}));
+    wgs.push(Box::new(widgets::widget::prefix(String::from(""), &clock_widget)));
 
     loop {
         let mut items: Vec<sway::SwaybarItem> = Vec::new();
