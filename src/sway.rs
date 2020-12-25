@@ -15,7 +15,7 @@ impl SwaybarHeader {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Serialize)]
 pub struct SwaybarItem {
     pub name: String,
     pub full_text: String,
