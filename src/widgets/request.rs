@@ -11,7 +11,7 @@ impl widget::Widget for RequestWidget {
         let data = reqwest::blocking::get(&self.url).unwrap().text().unwrap();
         SwaybarItem::new(
             String::from("request"),
-            data
+            String::from(data.trim()),
         )
     }
 }
