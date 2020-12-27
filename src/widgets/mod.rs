@@ -1,4 +1,5 @@
-pub mod cpu;
 pub mod clock;
-pub mod widget;
+pub mod cpu;
 pub mod request;
+pub mod utils;
+pub mod widget;
