@@ -18,6 +18,7 @@ fn main() -> io::Result<()> {
     let mut wgs: Vec<Box<dyn widgets::widget::Widget>> = Vec::new();
     wgs.push(Box::new(widgets::widget::cached(Duration::hours(1), &wttr_widget)));
     wgs.push(Box::new(widgets::cpu::CpuSpeedWidget{}));
+    wgs.push(Box::new(widgets::battery::BatteryWidget{}));
     wgs.push(Box::new(widgets::widget::prefix(String::from(""), &clock_widget)));
 
     loop {
