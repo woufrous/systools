@@ -8,7 +8,10 @@ pub struct RequestWidget {
 
 impl widget::Widget for RequestWidget {
     fn render(&self) -> SwaybarItem {
-        let data = reqwest::blocking::get(&self.url).unwrap().text().unwrap();
+        let data = match reqwest::blocking::get(&self.url) {
+            reqwest::Result::Err(_) => String::from(""),
+            reqwest::Result::Ok(resp) => resp.text().unwrap_or(String::from("")),
+        };
         SwaybarItem::new(
             String::from("request"),
             String::from(data.trim()),
