@@ -13,7 +13,7 @@ fn main() -> io::Result<()> {
     println!("{}\n[", jhdr);
 
     let clock_widget = widgets::clock::ClockWidget{format_str: String::from("%Y-%m-%d %H:%M:%S")};
-    let wttr_widget = widgets::request::RequestWidget{url: String::from("https://wttr.in?format=2")};
+    let wttr_widget = widgets::request::RequestWidget::new("https://wttr.in?format=2");
 
     let mut wgs: Vec<Box<dyn widgets::widget::Widget>> = Vec::new();
     wgs.push(Box::new(widgets::widget::cached(Duration::hours(1), &wttr_widget)));
