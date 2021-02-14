@@ -1,0 +1,3 @@
+# systools
+Simple Rust tool for displaying system stats in the Sway statusbar.
+Might work with i3 as well...
